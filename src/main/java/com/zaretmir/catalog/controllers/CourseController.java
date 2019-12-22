@@ -2,6 +2,7 @@ package com.zaretmir.catalog.controllers;
 
 import com.zaretmir.catalog.dao.CourseMapper;
 import com.zaretmir.catalog.models.Course;
+import com.zaretmir.catalog.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,22 +15,22 @@ import java.util.List;
 public class CourseController {
 
     @Autowired
-    private CourseMapper courseMapper;
+    private CourseService courseService;
 
     @GetMapping("/courses")
     public ResponseEntity<List<Course>> getAllCourses(){
-        return new ResponseEntity<>(courseMapper.getAll(), HttpStatus.OK);
+        return new ResponseEntity<>(courseService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/courses/{id}")
     public ResponseEntity<Course> getCourse(@PathVariable("id") Long id){
-        return new ResponseEntity<>(courseMapper.getByIdWithInstructor(id), HttpStatus.OK);
+        return new ResponseEntity<>(courseService.getByIdWithInstructor(id), HttpStatus.OK);
     }
 
     // TODO retrieve object (not mock)
     @PostMapping("/courses")
     public ResponseEntity<Course> addCourse(){
         Course course = new Course("MySQL Workbench Intro", 4, true);
-        return new ResponseEntity<>(courseMapper.add(course), HttpStatus.OK);
+        return new ResponseEntity<>(courseService.add(course), HttpStatus.OK);
     }
 }

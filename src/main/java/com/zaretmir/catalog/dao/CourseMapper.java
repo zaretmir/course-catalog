@@ -18,9 +18,9 @@ public class CourseMapper {
         return allCourses;
     }
 
-    public Course getById() {
+    public Course getById(Long id) {
         SqlSession session = MyBatisUtil.getSessionFactory().openSession();
-        Course course = session.selectOne("getCourse");
+        Course course = session.selectOne("getCourse", id);
         session.commit();
         session.close();
         return course;
@@ -41,5 +41,13 @@ public class CourseMapper {
         session.commit();
         session.close();
         return course;
+    }
+
+    public List<Course> getAllActive() {
+        SqlSession session = MyBatisUtil.getSessionFactory().openSession();
+        List<Course> allCourses = session.selectList("getAllActiveCourses");
+        session.commit();
+        session.close();
+        return allCourses;
     }
 }

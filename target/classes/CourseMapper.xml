@@ -35,6 +35,11 @@
         SELECT * FROM course;
     </select>
 
+    <select id="getAllActiveCourses" resultType="Course" resultMap="courseResultWithInstructor">
+        SELECT * FROM course
+        WHERE course.is_active = true;
+    </select>
+
     <select id="getAllCoursesWithInstructor" resultType="Course" resultMap="courseResultWithInstructor">
         SELECT * FROM course
         LEFT JOIN instructor ON course.instructor_id = instructor.id;
