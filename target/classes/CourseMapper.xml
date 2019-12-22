@@ -1,0 +1,47 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CourseMapper">
+
+    <resultMap id="courseResultWithInstructor" type="Course">
+        <id property = "id" column = "id"/>
+        <result property = "title" column = "title"/>
+        <result property = "duration" column = "duration"/>
+        <result property = "isActive" column = "is_active"/>
+        <association property="instructor" column="instructor_id" resultMap="InstructorMapper.instructorResult"/>
+    </resultMap>
+
+    <resultMap id="courseResult" type="Course">
+        <id property = "id" column = "id"/>
+        <result property = "title" column = "title"/>
+        <result property = "duration" column = "duration"/>
+        <result property = "isActive" column = "is_active"/>
+        <association property="instructor" column="instructor_id" resultMap="InstructorMapper.instructorResult"/>
+    </resultMap>
+
+    <select id="getByIdWithInstructor"  parameterType="Long" resultMap="courseResultWithInstructor">
+        SELECT * FROM course
+        LEFT JOIN instructor ON course.instructor_id = instructor.id
+        WHERE course.id = #{id}
+    </select>
+
+    <select id="getById"  parameterType="Long" resultMap="courseResult">
+        SELECT * FROM course
+        WHERE course.id = #{id};
+    </select>
+
+    <select id="getAllCourses" resultType="Course" resultMap="courseResultWithInstructor">
+        SELECT * FROM course;
+    </select>
+
+    <select id="getAllCoursesWithInstructor" resultType="Course" resultMap="courseResultWithInstructor">
+        SELECT * FROM course
+        LEFT JOIN instructor ON course.instructor_id = instructor.id;
+    </select>
+    
+    <insert id="insert" parameterType="Course">
+        INSERT INTO course (title, duration, is_active) VALUES (#{title}, #{duration}, #{isActive});
+    </insert>
+
+</mapper>

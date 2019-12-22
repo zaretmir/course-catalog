@@ -7,8 +7,22 @@ import lombok.Setter;
 @Setter
 public class Course {
 
-    private Boolean isActive;
+    private Long id;
     private String title;
     private Integer duration;
+    private Boolean isActive;
     private Instructor instructor;
+
+    @Override
+    public String toString() {
+        return "Title: " + this.title + " Instructor: " + this.instructor.getName();
+    }
+
+    public Course() {}
+
+    public Course(String title, Integer duration, Boolean isActive) {
+        this.isActive = isActive;
+        this.title = title;
+        this.duration = duration;
+    }
 }
