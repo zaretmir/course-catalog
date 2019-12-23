@@ -19,7 +19,6 @@
         <result property = "duration" column = "duration"/>
         <result property = "level" column = "level"/>
         <result property = "isActive" column = "is_active"/>
-        <association property="instructor" column="instructor_id" resultMap="InstructorMapper.instructorResult"/>
     </resultMap>
 
     <select id="getByIdWithInstructor"  parameterType="Long" resultMap="courseResultWithInstructor">
@@ -33,11 +32,11 @@
         WHERE course.id = #{id};
     </select>
 
-    <select id="getAllCourses" resultType="Course" resultMap="courseResultWithInstructor">
+    <select id="getAllCourses" resultType="Course" resultMap="courseResult">
         SELECT * FROM course;
     </select>
 
-    <select id="getAllActiveCourses" resultType="Course" resultMap="courseResultWithInstructor">
+    <select id="getAllActiveCourses" resultType="Course" resultMap="courseResult">
         SELECT * FROM course
         WHERE course.is_active = true;
     </select>
