@@ -1,10 +1,12 @@
 package com.zaretmir.catalog.models;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@EqualsAndHashCode(exclude = {"instructor"})
 public class Course {
 
     private Long id;
@@ -13,11 +15,6 @@ public class Course {
     private String level;
     private Boolean isActive;
     private Instructor instructor;
-
-    @Override
-    public String toString() {
-        return "Title: " + this.title + " Instructor: " + this.instructor.getName();
-    }
 
     public Course() {}
 
