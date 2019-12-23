@@ -10,6 +10,7 @@ public class Course {
     private Long id;
     private String title;
     private Integer duration;
+    private String level;
     private Boolean isActive;
     private Instructor instructor;
 

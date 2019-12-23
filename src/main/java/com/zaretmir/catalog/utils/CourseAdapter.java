@@ -10,6 +10,7 @@ public class CourseAdapter {
         entity.setId(dto.getId());
         entity.setTitle(dto.getTitle());
         entity.setDuration(dto.getDuration());
+        entity.setLevel(dto.getLevel());
         entity.setIsActive(dto.getIsActive());
         entity.setInstructor(dto.getInstructor());
 
@@ -21,6 +22,7 @@ public class CourseAdapter {
         dto.setId(entity.getId());
         dto.setTitle(entity.getTitle());
         dto.setDuration(entity.getDuration());
+        dto.setLevel(entity.getLevel());
         dto.setIsActive(entity.getIsActive());
         dto.setInstructor(entity.getInstructor());
 

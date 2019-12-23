@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -18,7 +19,12 @@ public class CourseDto {
     @Min(value = 0, message = "duration must be a positive integer")
     private Integer duration;
 
+    @NotBlank(message = "Level is required")
+    private String level;
+
+    @NotNull(message = "Active status is required")
     private Boolean isActive;
 
+    @NotNull(message = "Instructor is required")
     private Instructor instructor;
 }

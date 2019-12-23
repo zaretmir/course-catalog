@@ -1,6 +1,5 @@
 package com.zaretmir.catalog.controllers;
 
-import com.zaretmir.catalog.dao.CourseMapper;
 import com.zaretmir.catalog.models.Course;
 import com.zaretmir.catalog.models.CourseDto;
 import com.zaretmir.catalog.services.CourseService;
@@ -16,6 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/course-management")
+@CrossOrigin
 public class CourseController {
 
     @Autowired
