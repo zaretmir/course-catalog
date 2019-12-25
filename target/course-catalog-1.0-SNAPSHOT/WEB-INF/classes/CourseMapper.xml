@@ -47,7 +47,8 @@
     </select>
     
     <insert id="insert" parameterType="Course">
-        INSERT INTO course (title, duration, is_active) VALUES (#{title}, #{duration}, #{isActive});
+        INSERT INTO course (title, duration, is_active, level, instructor_id)
+        VALUES (#{title}, #{duration}, #{isActive}, #{level}, #{instructor.id});
     </insert>
 
 </mapper>
